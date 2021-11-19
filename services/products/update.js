@@ -1,5 +1,5 @@
-const modelCreate = require('../../models/products/create');
 const modelGetByName = require('../../models/products/getByName');
+const modelUpdate = require('../../models/products/update');
 
 const isValidName = async (name) => {
   const alreadyExists = await modelGetByName(name);
@@ -7,14 +7,14 @@ const isValidName = async (name) => {
   return false;
 };
 
-const create = async (name, quantity) => {
+const update = async (name, quantity, id) => {
   const err = {
-      code: 'invalid_data',
-      message: '',
+    code: 'invalid_data',
+    message: '',
   };
   if (await isValidName(name)) err.message = await isValidName(name);
   if (err.message) return err;
-  return modelCreate(name, quantity);
+  return modelUpdate(name, quantity, id);
 };
 
-module.exports = create;
+module.exports = update;
