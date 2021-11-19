@@ -21,7 +21,7 @@ const create = async (name, quantity) => {
   };
   if (await isValidName(name)) err.message = await isValidName(name);
   if (isValidQuantity(quantity)) err.message = isValidQuantity(quantity);
-  if (err.message) return { err: { err } };
+  if (err.message) return err;
   return modelCreate(name, quantity);
 };
 

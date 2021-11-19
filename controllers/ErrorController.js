@@ -4,6 +4,7 @@ module.exports = (err, req, res, _next) => {
     .json({ err: { code: 'invalid_data', message: err.details[0].message } });
   }
   let status = 500;
-  if (err.err.code === 'invalid_data') status = 422;
-  res.status(status).json(err);
+  if (err.code === 'invalid_data') status = 422;
+  if (err.code === 'not_found' || err.code === 'stock_problem') status = 404;
+  res.status(status).json({ err });
 };

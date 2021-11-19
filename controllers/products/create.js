@@ -10,7 +10,7 @@ const create = async (req, res, next) => {
   if (error) return next(error);
   const { name, quantity } = req.body;
   const newProduct = await serviceCreate(name, quantity);
-  if (newProduct.err) return next(newProduct.err);
+  if (newProduct.code) return next(newProduct);
   res.status(201).json(newProduct);
 };
 
