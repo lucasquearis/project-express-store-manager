@@ -1,10 +1,7 @@
 const connection = require('../connection');
 
-const getByName = async (name) => {
-  const product = await connection()
+const getByName = (name) => connection()
     .then((db) => db.collection('products').findOne({ name }))
     .then((result) => result);
-  return product;
-};
 
 module.exports = getByName;
