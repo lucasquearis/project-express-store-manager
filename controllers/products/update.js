@@ -17,8 +17,8 @@ const update = async (req, res, next) => {
   const validateProduct = await serviceGetById(id);
   const updateProduct = await serviceUpdate(name, quantity, id);
 
-  if (validateProduct.err) return next(validateProduct.err);
-  if (updateProduct.code) return next(updateProduct);
+  if ('err' in validateProduct) return next(validateProduct.err);
+  if ('code' in updateProduct) return next(updateProduct);
   
   res.status(200).json(updateProduct);
 };
