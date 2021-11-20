@@ -1,8 +1,5 @@
 const serviceList = require('../../services/products/list');
 
-const list = async (req, res) => {
-  const products = await serviceList();
-  res.status(200).json(products);
-};
+const list = async (req, res) => res.status(200).json(await serviceList());
 
 module.exports = list;
