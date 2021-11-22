@@ -11,7 +11,7 @@ const create = async (req, res, next) => {
   })).validate(req.body);
   if (error) return next(error);
   const newSale = await serviceCreate(req.body);
-  if ('code' in newSale) return next(newSale);
+  if ('err' in newSale) return next(newSale.err);
   res.status(200).json(newSale);
 };
 

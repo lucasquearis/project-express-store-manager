@@ -664,7 +664,7 @@ describe.skip('8 - Crie um endpoint para deletar uma venda', () => {
   });
 });
 
-describe('9 - Atualize a quantidade de produtos', () => {
+describe.skip('9 - Atualize a quantidade de produtos', () => {
   let connection;
   let db;
 
@@ -774,7 +774,7 @@ describe('9 - Atualize a quantidade de produtos', () => {
   });
 });
 
-describe.skip('10 - Valide a quantidade de produtos', () => {
+describe('10 - Valide a quantidade de produtos', () => {
   let connection;
   let db;
 
