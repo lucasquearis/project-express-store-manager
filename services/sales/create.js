@@ -4,7 +4,7 @@ const modelUpdateProduct = require('../../models/products/updateQuantity');
 
 const updateQuantityProduct = async (quantityVendido, quantityEstoque) => {
   const result = quantityEstoque.quantity - quantityVendido.quantity;
-  if (result < 1) return null;
+  if (result < 0) return null;
   await modelUpdateProduct(quantityVendido.productId, result);
 };
 
@@ -16,7 +16,6 @@ const create = async (body) => {
     return productVerify;
   });
   const promiseResolve = await Promise.all(exist);
-  console.log('quanto quero adicionar', body);
   if (promiseResolve.includes(null)) {
     return {
       err: {

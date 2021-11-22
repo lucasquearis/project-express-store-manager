@@ -9,7 +9,7 @@ const remove = async (id) => {
         _id: ObjectId(id),
       },
     ))
-    .then((respose) => respose);
+    .then((_respose) => ({ message: 'delete successfully' }));
 };
 
 module.exports = remove;
