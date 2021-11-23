@@ -11,10 +11,6 @@ const update = async (name, quantity, id) => connection()
         },
       },
     ))
-    .then((_result) => ({
-      _id: id,
-      name,
-      quantity,
-  }));
+    .then((result) => result);
 
 module.exports = update;

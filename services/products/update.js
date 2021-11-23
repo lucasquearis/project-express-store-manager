@@ -8,16 +8,16 @@ const isValidName = async (name) => {
   return false;
 };
 
-const isValidParams = (name, quantity, id) => {
+const isValidParams = (name, quantity) => {
   const { error } = Joi.object({
     name: Joi.string().min(5).required(),
     quantity: Joi.number().min(1).required(),
-  }).validate({ name, quantity, id });
+  }).validate({ name, quantity });
   return error;
 };
 
 const update = async (name, quantity, id) => {
-  const error = isValidParams(name, quantity, id);
+  const error = isValidParams(name, quantity);
   if (error) throw error;
   const err = {
     code: 'invalid_data',
@@ -25,7 +25,12 @@ const update = async (name, quantity, id) => {
   };
   if (await isValidName(name)) err.message = await isValidName(name);
   if (err.message) throw err;
-  return modelUpdate(name, quantity, id);
+  const resultFormat = {
+    _id: id,
+    name,
+    quantity,
+  };
+  if (await modelUpdate(name, quantity, id)) return resultFormat;
 };
 
 module.exports = update;
