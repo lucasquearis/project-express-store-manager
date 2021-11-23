@@ -27,12 +27,10 @@ const updateQuantity = async (id) => {
 
 const remove = async (id) => {
   if (!ObjectId.isValid(id)) {
-    return {
-      err: 
-      {
+    const errorFormat = {
         code: 'invalid_data', message: 'Wrong sale ID format',
-      },
-    };
+      };
+    throw errorFormat;
   }
   await updateQuantity(id);
   const deleteModel = await modelDelete(id);
