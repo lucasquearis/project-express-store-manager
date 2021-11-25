@@ -11,15 +11,7 @@ const update = async (productId, quantity, id) => {
           ],
         },
       },
-    )).then((_response) => ({
-        _id: id,
-        itensSold: [
-          {
-            productId,
-            quantity,
-          },
-        ],
-      }));
+    )).then((response) => response);
 };
 
 module.exports = update;

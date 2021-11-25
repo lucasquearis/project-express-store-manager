@@ -19,4 +19,4 @@ app.use(middlewareError);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => `online na porta ${PORT}`);
+app.listen(PORT, () => console.log(`online na porta ${PORT}`));
