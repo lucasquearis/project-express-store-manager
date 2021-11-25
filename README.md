@@ -537,8 +537,6 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 #### Observações Técnicas:
 
-- O `productId` devem ser igual ao `id` de um produto anteriormente cadastrado;
-
 - `quantity` deve ser um número inteiro maior que 0;
 
 - Cada venda deve ter um id que seja único e gerado no momento em que o recurso for criado;
