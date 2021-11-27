@@ -50,7 +50,6 @@ const update = async (body, id) => {
         },
       };
   }
-  console.log(resolveMap);
   return formatResult(resolveMap, id);
 };
 
