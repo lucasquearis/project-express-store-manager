@@ -48,22 +48,22 @@ describe('Testes do model', () => {
       expect(response).to.include.keys('_id', 'name', 'quantity');
     });
     it('Verifica se o produto foi realmente adicionado', async () => {
-      const { products } = await listProductsModel.list();
-      const [firstElement] = products;
+      const result = await listProductsModel.list();
+      const [firstElement] = result;
       expect(firstElement.name).to.equal('banana');
       expect(firstElement.quantity).to.equal(10);
     });
   });
   describe('Testa o model list no banco "products"', () => {
-    it('Verifica se o retorno é um objeto e existe uma chave chamada "products"', async () => {
+    it('Verifica se o retorno é uma array', async () => {
       const products = await listProductsModel.list();
-      expect(products).to.be.a('object');
-      expect(products).to.have.deep.keys('products');
+      console.log(products);
+      expect(products).to.be.a('array');
     })
     it('Verifica se lista todos os produtos', async () => {
-      const { products } = await listProductsModel.list();
-      expect(products).to.be.a('array')
-      expect(products).to.have.length(3);
+      const result = await listProductsModel.list();
+      expect(result).to.be.a('array')
+      expect(result).to.have.length(3);
     });
   });
   describe('Testa o model update no banco "products"', () => {
@@ -79,7 +79,7 @@ describe('Testes do model', () => {
   describe('Testa o model delete no banco "products"', () => {
     it('Verifica se o produto é deletado corretamente', async () => {
       const listProducts = async () => await listProductsModel.list();
-      const { products } = await listProducts();
+      const products = await listProducts();
       const idGoiabada = products[3]._id;
       await deleteProductModel.deleteModel(idGoiabada);
       const getProductById = await getByIdProductModel.getById(idGoiabada);
@@ -92,9 +92,9 @@ describe('Testes do model', () => {
       expect(verifyProductId).to.be.null;
     })
     it('Verifica se o model getById nos entrega o objeto correto', async () => {
-      const { products } = await listProductsModel.list();
+      const products = await listProductsModel.list();
       const idAbacate = await products[1]._id
-      const { _id, name, quantity } = await getByIdProductModel.getById(idAbacate);
+      const { name, quantity } = await getByIdProductModel.getById(idAbacate);
       expect(name).to.equal('abacate');
       expect(quantity).to.equal(20);
     });
@@ -108,7 +108,7 @@ describe('Testes do model', () => {
   });
   describe('Testa o model updateQuantity no banco "products"', () => {
     it('Verifica se a quantidade do produto é atualizado', async () => {
-      const { products } = await listProductsModel.list();
+      const products = await listProductsModel.list();
       const { _id } = products[1];
       const { name, quantity } = await getByIdProductModel.getById(_id);
       expect(name).to.equal('abacate');

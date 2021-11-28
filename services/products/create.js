@@ -1,30 +1,15 @@
-const Joi = require('joi');
-
 const modelCreate = require('../../models/products/create');
-const modelGetByName = require('../../models/products/getByName');
-
-const isValidName = async (name) => {
-  const alreadyExists = await modelGetByName.getByName(name);
-  if (alreadyExists) return 'Product already exists';
-  return false;
-};
-
-const isValidParams = (name, quantity) => {
-  const { error } = Joi.object({
-    name: Joi.string().required().min(5),
-    quantity: Joi.number().required().min(1),
-  }).validate({ name, quantity });
-  return error;
-};
+const createHelper = require('./createHelper');
 
 const create = async (name, quantity) => {
-  const error = isValidParams(name, quantity);
+  const error = createHelper.isValidParams(name, quantity);
   if (error) throw error;
   const err = {
       code: 'invalid_data',
       message: '',
   };
-  if (await isValidName(name)) err.message = await isValidName(name);
+  const alreadyExists = await createHelper.isValidName(name);
+  if (alreadyExists) err.message = alreadyExists;
   if (err.message) throw err;
   return modelCreate.create(name, quantity);
 };
