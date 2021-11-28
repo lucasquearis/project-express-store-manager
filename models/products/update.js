@@ -13,4 +13,4 @@ const update = async (name, quantity, id) => connection()
     ))
     .then((result) => result);
 
-module.exports = update;
+module.exports = { update };

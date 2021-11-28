@@ -12,4 +12,4 @@ const updateQuantity = async (id, quantity) => connection()
     ))
     .then((result) => result);
 
-module.exports = updateQuantity;
+module.exports = { updateQuantity };

@@ -4,4 +4,4 @@ const getByName = (name) => connection()
     .then((db) => db.collection('products').findOne({ name }))
     .then((result) => result);
 
-module.exports = getByName;
+module.exports = { getByName };

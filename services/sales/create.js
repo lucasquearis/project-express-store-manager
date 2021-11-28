@@ -9,7 +9,7 @@ const ERROR_MESSAGE = 'Wrong product ID or invalid quantity';
 const updateQuantityProduct = async (quantityVendido, quantityEstoque) => {
   const result = quantityEstoque.quantity - quantityVendido.quantity;
   if (result < 0) return null;
-  await modelUpdateProduct(quantityVendido.productId, result);
+  await modelUpdateProduct.updateQuantity(quantityVendido.productId, result);
 };
 
 const validateParams = (body) => {
@@ -25,7 +25,7 @@ const create = async (body) => {
   const errorParams = validateParams(body);
   if (errorParams) throw errorParams;
   const exist = await body.map(async (obj) => {
-    const productVerify = await modelGetProductById(obj.productId);
+    const productVerify = await modelGetProductById.getById(obj.productId);
     if (productVerify.quantity < obj.quantity) return null;
     await updateQuantityProduct(obj, productVerify);
     return productVerify;
@@ -38,7 +38,7 @@ const create = async (body) => {
     };
     throw errorFormat; 
   }
-  return modelCreate(body);
+  return modelCreate.create(body);
 };
 
-module.exports = create;
+module.exports = { create };

@@ -6,4 +6,4 @@ const list = async () => {
   return { products };
 };
 
-module.exports = list;
+module.exports = { list };

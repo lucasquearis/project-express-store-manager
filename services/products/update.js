@@ -3,7 +3,7 @@ const modelGetByName = require('../../models/products/getByName');
 const modelUpdate = require('../../models/products/update');
 
 const isValidName = async (name) => {
-  const alreadyExists = await modelGetByName(name);
+  const alreadyExists = await modelGetByName.getByName(name);
   if (alreadyExists) return 'Product already exists';
   return false;
 };
@@ -30,7 +30,7 @@ const update = async (name, quantity, id) => {
     name,
     quantity,
   };
-  if (await modelUpdate(name, quantity, id)) return resultFormat;
+  if (await modelUpdate.update(name, quantity, id)) return resultFormat;
 };
 
-module.exports = update;
+module.exports = { update };

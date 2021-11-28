@@ -7,4 +7,4 @@ const create = (name, quantity) => connection()
         return firstElement;
     });
 
-module.exports = create;
+module.exports = { create };

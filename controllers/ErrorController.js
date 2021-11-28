@@ -1,4 +1,4 @@
-module.exports = (err, req, res, _next) => {
+const errorHandler = (err, req, res, _next) => {
   if (err.isJoi) {
     return res.status(422)
     .json({ err: { code: 'invalid_data',
@@ -10,3 +10,5 @@ module.exports = (err, req, res, _next) => {
   if (err.code === 'not_found' || err.code === 'stock_problem') status = 404;
   res.status(status).json({ err });
 };
+
+module.exports = { errorHandler };

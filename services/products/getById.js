@@ -1,7 +1,7 @@
 const modelGetById = require('../../models/products/getById');
 
 const getById = async (id) => {
-  const product = await modelGetById(id);
+  const product = await modelGetById.getById(id);
   if (!product) {
     const error = {
       code: 'invalid_data',
@@ -12,4 +12,4 @@ const getById = async (id) => {
   return product;
 };
 
-module.exports = getById;
+module.exports = { getById };

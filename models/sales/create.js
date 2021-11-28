@@ -13,4 +13,4 @@ const create = async (body) => connection()
       return firstElement;
     });
 
-module.exports = create;
+module.exports = { create };

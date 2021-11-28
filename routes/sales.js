@@ -7,10 +7,10 @@ const deleteController = require('../controllers/sales/delete');
 
 const salesRouter = express.Router({ mergeParams: true });
 
-salesRouter.post('/', createController);
-salesRouter.get('/', listController);
-salesRouter.get('/:id', getByIdController);
-salesRouter.put('/:id', updateController);
-salesRouter.delete('/:id', deleteController);
+salesRouter.post('/', createController.create);
+salesRouter.get('/', listController.list);
+salesRouter.get('/:id', getByIdController.getById);
+salesRouter.put('/:id', updateController.update);
+salesRouter.delete('/:id', deleteController.remove);
 
-module.exports = salesRouter;
+module.exports = { salesRouter };

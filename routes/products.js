@@ -7,10 +7,10 @@ const deleteController = require('../controllers/products/delete');
 
 const productsRouter = express.Router({ mergeParams: true });
 
-productsRouter.post('/', createController);
-productsRouter.get('/', listController);
-productsRouter.get('/:id', getByIdController);
-productsRouter.put('/:id', updateController);
-productsRouter.delete('/:id', deleteController);
+productsRouter.post('/', createController.create);
+productsRouter.get('/', listController.list);
+productsRouter.get('/:id', getByIdController.getById);
+productsRouter.put('/:id', updateController.update);
+productsRouter.delete('/:id', deleteController.deleteProduct);
 
-module.exports = productsRouter;
+module.exports = { productsRouter };

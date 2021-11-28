@@ -1,5 +1,5 @@
 const modelList = require('../../models/products/list');
 
-const list = async () => modelList();
+const list = async () => modelList.list();
 
-module.exports = list;
+module.exports = { list };

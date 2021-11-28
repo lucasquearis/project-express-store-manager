@@ -9,4 +9,4 @@ const remove = async (id) => connection()
     ))
     .then((_response) => ({ message: 'delete successfully' }));
 
-module.exports = remove;
+module.exports = { remove };

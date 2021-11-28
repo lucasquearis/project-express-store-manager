@@ -2,10 +2,10 @@ const getByIdService = require('./getById');
 const modelDelete = require('../../models/products/delete');
 
 const deleteService = async (id) => {
-  const verifyId = await getByIdService(id);
+  const verifyId = await getByIdService.getById(id);
   if (verifyId.code) throw verifyId;
   const { _id, name, quantity } = verifyId;
-  await modelDelete(_id);
+  await modelDelete.deleteModel(_id);
   const formatObject = {
     _id,
     name,
@@ -14,4 +14,4 @@ const deleteService = async (id) => {
   return formatObject;
 };
 
-module.exports = deleteService;
+module.exports = { deleteService };

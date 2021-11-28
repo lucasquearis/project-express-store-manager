@@ -5,4 +5,4 @@ const deleteModel = async (id) => connection()
     .then((db) => db.collection('products').deleteOne({ _id: ObjectId(id) }))
     .then((response) => response);
 
-module.exports = deleteModel;
+module.exports = { deleteModel };

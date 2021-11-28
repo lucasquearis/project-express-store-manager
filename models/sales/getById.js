@@ -8,4 +8,4 @@ const getById = async (id) => {
     .then((response) => response);
 };
 
-module.exports = getById;
+module.exports = { getById };

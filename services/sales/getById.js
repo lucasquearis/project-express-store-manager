@@ -1,7 +1,7 @@
 const modelGetById = require('../../models/sales/getById');
 
 const getById = async (id) => {
-  const sale = await modelGetById(id);
+  const sale = await modelGetById.getById(id);
   if (!sale) {
     const errorFormat = {
       code: 'not_found',
@@ -12,4 +12,4 @@ const getById = async (id) => {
   return sale;
 };
 
-module.exports = getById;
+module.exports = { getById };

@@ -4,7 +4,7 @@ const modelCreate = require('../../models/products/create');
 const modelGetByName = require('../../models/products/getByName');
 
 const isValidName = async (name) => {
-  const alreadyExists = await modelGetByName(name);
+  const alreadyExists = await modelGetByName.getByName(name);
   if (alreadyExists) return 'Product already exists';
   return false;
 };
@@ -26,7 +26,7 @@ const create = async (name, quantity) => {
   };
   if (await isValidName(name)) err.message = await isValidName(name);
   if (err.message) throw err;
-  return modelCreate(name, quantity);
+  return modelCreate.create(name, quantity);
 };
 
-module.exports = create;
+module.exports = { create };

@@ -7,10 +7,10 @@ const modelUpdateProduct = require('../../models/products/updateQuantity');
 const ERROR_MESSAGE = 'Wrong product ID or invalid quantity';
 
 const verifyQuantityProduct = async (productId, quantity) => {
-  const quantityEstoque = await getByIdProductModel(productId);
+  const quantityEstoque = await getByIdProductModel.getById(productId);
   const resultQuantity = quantityEstoque.quantity - quantity;
   if (resultQuantity < 0) return null;
-  await modelUpdateProduct(productId, resultQuantity);
+  await modelUpdateProduct.updateQuantity(productId, resultQuantity);
   return { productId, quantity };
 };
 
@@ -25,7 +25,7 @@ const validateParams = (body) => {
 
 const formatResult = async (param, id) => {
   const inputUpdateModel = param
-    .map(async ({ productId, quantity }) => updateModel(productId, quantity, id));
+    .map(async ({ productId, quantity }) => updateModel.update(productId, quantity, id));
   await Promise.all(inputUpdateModel);
   const formatObject = {
     _id: id,
@@ -53,4 +53,4 @@ const update = async (body, id) => {
   return formatResult(resolveMap, id);
 };
 
-module.exports = update;
+module.exports = { update };

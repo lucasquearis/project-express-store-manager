@@ -7,15 +7,15 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/products', productsRoutes);
-app.use('/sales', salesRouter);
+app.use('/products', productsRoutes.productsRouter);
+app.use('/sales', salesRouter.salesRouter);
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();
 });
 
-app.use(middlewareError);
+app.use(middlewareError.errorHandler);
 
 const PORT = process.env.PORT || 3000;
 

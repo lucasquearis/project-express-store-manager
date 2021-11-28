@@ -14,4 +14,4 @@ const update = async (productId, quantity, id) => {
     )).then((response) => response);
 };
 
-module.exports = update;
+module.exports = { update };
