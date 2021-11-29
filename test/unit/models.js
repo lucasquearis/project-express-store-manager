@@ -57,7 +57,6 @@ describe('Testes do model', () => {
   describe('Testa o model list no banco "products"', () => {
     it('Verifica se o retorno é uma array', async () => {
       const products = await listProductsModel.list();
-      console.log(products);
       expect(products).to.be.a('array');
     })
     it('Verifica se lista todos os produtos', async () => {
