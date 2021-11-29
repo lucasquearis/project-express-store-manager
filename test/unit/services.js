@@ -28,7 +28,7 @@ const updateQuantityHelper = require('../../services/sales/updateHelper');
 const TEST_ID = '619bb3247870c1522d239ef2';
 const TEST_ID_TWO = '619bb3247870c1522d239ef7';
 
-describe('Teste dos Services', () => {
+describe('Teste dos services', () => {
   describe('Testa o service create do banco "products"', () => {
     before(async () => {
       sinon.stub(getByNameProductModel, 'getByName')
